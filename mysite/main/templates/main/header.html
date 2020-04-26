@@ -2,13 +2,7 @@
 	{% load static %}
     <link href ="{% static 'tinymce/css/prism.css'%}" rel = "stylesheet" >
 
-
-    <!-- Compiled and minified CSS -->
     <link href ="{% static 'main/css/materialize.css'%}" rel = "stylesheet" >
-
-
-    <!-- Compiled and minified JavaScript -->
-
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
@@ -16,27 +10,15 @@
 
 <body>
 
-<!-- 
-	{% for tut in tutorials %}
-	
-	<p>{{tut.tutorial_title}}</p>
-	<p>{{tut.tutorial_published}}</p>
-	<p>{{tut.tutorial_content|safe}}</p>
-
-	<br><br>
-	{% endfor %} -->
-
-
   {% include "main/includes/navbar.html" %}
-
   {% include "main/includes/messages.html" %}
 
-
-  
   <div class = "container">
     <br>
+
     {% block content %}
     {% endblock %}
+    
   </div>
 
 </body>
