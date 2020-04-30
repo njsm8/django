@@ -10,7 +10,7 @@ class TutorialCategory(models.Model):
 	class Meta:
 		verbose_name_plural = "Categories"
 
-	def _str_(self):
+	def __str__(self):
 		return self.tutorial_category
 
 class TutorialSeries(models.Model):
@@ -21,7 +21,7 @@ class TutorialSeries(models.Model):
 	class Meta:
 		verbose_name_plural = "Series"
 
-	def _str_(self):
+	def __str__(self):
 		return self.tutorial_series
 
 # Create your models here.
