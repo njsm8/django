@@ -12,6 +12,9 @@ from .forms import NewUserForm
 def single_slug(request, single_slug):
 	categories = [c.category_slug for c in TutorialCategory.objects.all()]
 	if single_slug in categories:
+		matching_series = TutorialSeries.objects.filter(tutorial_category__category_slug= single_slug)
+		for m in matching_series.all():
+		part_one = Tutorial.objects.filter(tutorial_series__tutorial_series)	
 		return HttpResponse(f"{single_slug} is a category!")
 
 
