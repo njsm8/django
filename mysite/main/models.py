@@ -32,5 +32,6 @@ class Tutorial(models.Model):
 
     tutorial_series = models.ForeignKey(TutorialSeries,default =1, verbose_name ="Series", on_delete = models.SET_DEFAULT)
     tutorial_slug = models.CharField(max_length=200, default=1)
+   
     def __str__(self):
         return self.tutorial_title

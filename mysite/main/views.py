@@ -1,6 +1,4 @@
 from django.shortcuts import render, redirect
-
-# Create your views here.
 from django.http import HttpResponse
 from .models import Tutorial, TutorialCategory, TutorialSeries
 from django.contrib.auth.forms import AuthenticationForm
@@ -18,14 +16,19 @@ def single_slug(request, single_slug):
 		for m in matching_series.all():
 			part_one = Tutorial.objects.filter(tutorial_series__tutorial_series = m.tutorial_series).earliest("tutorial_published")
 			series_urls[m] = part_one.tutorial_slug	
-
+ 
 		return render(request,
 					   "main/category.html",
 					   {"part_ones": series_urls})
 
-	tutorials = [t.tutorial_slug for c in TutorialCategory.objects.all()]
+	tutorials = [t.tutorial_slug for t in Tutorial.objects.all()]
 	if single_slug in tutorials:
-		return HttpResponse(f"{single_slug} is a tutorial!")
+		this_tutorial = Tutorial.objects.get(tutorial_slug = single_slug)
+
+
+		return render(request = request,
+					  template_name="main/tutorial.html",
+					  context = {"tutorial":this_tutorial})
 
 	return HttpResponse(f"{single_slug} does not correspond to anything at all.")
 
