@@ -26,9 +26,9 @@ def single_slug(request, single_slug):
 		this_tutorial = Tutorial.objects.get(tutorial_slug = single_slug)
 
 
-		return render(request = request,
-					  template_name="main/tutorial.html",
-					  context = {"tutorial":this_tutorial})
+		return render(request,
+					  "main/tutorial.html",
+					  {"tutorial":this_tutorial})
 
 	return HttpResponse(f"{single_slug} does not correspond to anything at all.")
 
